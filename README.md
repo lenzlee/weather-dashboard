@@ -33,7 +33,7 @@ Application URL: https://lenzlee.github.io/weather-dashboard/
 
 ## My Application Screenshot
 
-![alt text](06-server-side-apis-homework-demo.png)
+![alt text](weather-dashboard-screenshot.png)
 
 ## Mockup Provided
 
