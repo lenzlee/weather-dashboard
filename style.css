@@ -8,49 +8,25 @@ header {
   color: #FFFFFF;
 }
 
-.mainContainer {
-  background: transparent;
-  border: none;
-  resize: none;
-  color: #000000;
-  padding: 10px;
-  max-width: 60%;
-  display: block;
-  margin: 3em 1em;
-  padding: 1em;
-}
-
-#aside {
-  background-color: #cacaca;
-  min-height: 500px;
-  max-width: 40%;
-  display: block;
-  margin: 3em 1em;
-  padding: 1em;
+h3 {
+  font-weight: bold;
+  line-height: 3rem;
 }
 
 .cityInformationBox {
   border: 1px solid #000000;
-  min-height: 500px;
+  min-height: 300px;
+  margin-top: 3.5em;
 }
 
 
 .fiveDayForecast {
-  border: 1px solid #000000;
   min-height: 500px;
   margin-top: 1em;
 }
 
-
-.searchBtn {
-  border-left: 1px solid black;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background-color: #06aed5;
-  color: white;
-}
-
-.searchBtn i:hover {
-  font-size: 20px;
-  transition: all 0.3s ease-in-out;
+.btn-primary, .btn-secondary {
+  width: 100%;
+  display: block;
+  margin: 1em 0em;
 }
