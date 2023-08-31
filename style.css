@@ -40,3 +40,13 @@ img.icon {
   padding: 0 1em;
   min-height: 80px;
 }
+
+.forecast {
+  max-width: 25%;
+  min-width: 18%;
+  padding: 1em;
+  margin: 1em 0.5em;
+  color: #ffffff;
+  display: inline-grid;
+  background-color: #0d6efd;
+}

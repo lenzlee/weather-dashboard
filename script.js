@@ -43,6 +43,7 @@ var city = "";
 
         var now = moment();
         var currentDate = now.format('MMMM D, YYYY');
+        var cityId = response.id;
         var cityWeatherData = $("<div col-12>").append($("<h2>" + response.name + ' (' + currentDate + ')' + "</h2>"));
         var icon = $('<img class="icon">').attr('src', 'http://openweathermap.org/img/w/' + response.weather[0].icon + '.png');  
         var temperatureInfo = $('<br><h4>').text('Temp: ' + response.main.temp + ' °F');
@@ -50,6 +51,8 @@ var city = "";
         var humidityInfo = $('<h4>').text('Humidity: ' + response.main.humidity + '%');
         
         cityWeatherData.append(icon).append(temperatureInfo).append(windInfo).append(humidityInfo);
+
+        displayFiveDayForecast(cityId);
 
         $('#CityInfo').append(cityWeatherData);
 
@@ -73,10 +76,42 @@ function saveInfoToLocalStorage(city) {
 }
 
   // 5 Day forecast display function
+  function displayFiveDayForecast(city) {
+    $.ajax({ // gets the 5 day forecast API
+        url: "https://api.openweathermap.org/data/2.5/forecast?id=" + city + "&units=imperial&APPID=" + APIKey,
+        method: "GET",
+    }).then(function (response) {
+       
+        var arrayList = response.list;
+        for (var i = 0; i < arrayList.length; i++) {
+            if (arrayList[i].dt_txt.split(' ')[1] === '12:00:00') {
+                console.log(arrayList[i]);
+                
+                var cityWeatherData = $('<div>');
+
+                cityWeatherData.addClass('forecast bg-primary>');
+
+                var days5 = $("<h5>").text(response.list[i].dt_txt.split(" ")[0]);
+
+                var icon = $('<img>').attr('src', 'http://openweathermap.org/img/w/' + arrayList[i].weather[0].icon + '.png');
+
+                var tempInfo = $('<p>').text('Temp: ' + arrayList[i].main.temp + ' °F');               
+
+                var windInfo = $('<p>').text('Wind: ' + arrayList[i].wind.speed + 'MPH');    
+                
+                var humidityInfo = $('<p>').text('Humidity: ' + arrayList[i].main.humidity + '%');
+
+                cityWeatherData.append(days5).append(icon).append(tempInfo).append(windInfo).append(humidityInfo);
+
+                $('#forecast').append(cityWeatherData);
+            }
+        }
+    });
+};
 
   // Get data store from local storage function
 
-  // Recent Cities List function
+  // Recent Cities Buttons List function
 
 
 });
