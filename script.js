@@ -3,6 +3,8 @@ $(document).ready(function () {
   // display current date
   $('#currentDay').text(dayjs().format('dddd, MMMM D, YYYY'));
 
+  checkDataInLocalStorage();
+
   // set elements - API Key
   // API Key for all weather data 
 var APIKey = "e7870e69c64fe6687d1c5339370055dd";
@@ -109,9 +111,36 @@ function saveInfoToLocalStorage(city) {
     });
 };
 
-  // Get data store from local storage function
+  // Check data stored in local storage function
+  function checkDataInLocalStorage() {
+    var storedCities = localStorage.getItem('cities-recently-searched');
+    var dataArray = [];
+    if (!storedCities) {
+        console.log("no data stored");
+    } else {
+      storedCities.trim();
+        dataArray = storedCities.split(',');
+        for (var i = 0; i < dataArray.length; i++) {
+            createRecentCitySearchedBtn(dataArray[i]);
+        }
+    }
+};
 
-  // Recent Cities Buttons List function
-
+  // Recent Searched Cities Buttons List function
+  function createRecentCitySearchedBtn(city) {
+   var buttonsList = $("<div>")
+    var recentCityButton = $('<button type="submit" class="btn btn-secondary atlanta">');
+    //add ID to avoid duplicate city button
+    recentCityButton.attr('id', 'dupBtn');
+    recentCityButton.addClass("button is-small recentSearch");
+    recentCityButton.text(city);
+    buttonsList.append(recentCityButton)
+    $("#recentCitiesList").prepend(buttonsList);
+    //set click function to avoid duplicate city button
+    $("#dupBtn").on("click", function () {
+        var newCity = $(this).text();
+        getWeatherInfo(newCity);
+    });
+}
 
 });
