@@ -8,6 +8,11 @@ header {
   color: #FFFFFF;
 }
 
+h2 {
+  font-weight: bold;
+  display: inline-block;
+}
+
 h3 {
   font-weight: bold;
   line-height: 3rem;
@@ -15,8 +20,8 @@ h3 {
 
 .cityInformationBox {
   border: 1px solid #000000;
-  min-height: 300px;
   margin-top: 3.5em;
+  padding: 1em;
 }
 
 
@@ -29,4 +34,9 @@ h3 {
   width: 100%;
   display: block;
   margin: 1em 0em;
+}
+
+img.icon {
+  padding: 0 1em;
+  min-height: 80px;
 }

@@ -38,6 +38,21 @@ var city = "";
           })
     }).then(function (response) {
         console.log(response)
+
+        $(".cityInformationBox").empty()
+
+        var now = moment();
+        var currentDate = now.format('MMMM D, YYYY');
+        var cityWeatherData = $("<div col-12>").append($("<h2>" + response.name + ' (' + currentDate + ')' + "</h2>"));
+        var icon = $('<img class="icon">').attr('src', 'http://openweathermap.org/img/w/' + response.weather[0].icon + '.png');  
+        var temperatureInfo = $('<br><h4>').text('Temp: ' + response.main.temp + ' °F');
+        var windInfo = $('<h4>').text('Wind: ' + response.wind.speed + 'MPH'); 
+        var humidityInfo = $('<h4>').text('Humidity: ' + response.main.humidity + '%');
+        
+        cityWeatherData.append(icon).append(temperatureInfo).append(windInfo).append(humidityInfo);
+
+        $('#CityInfo').append(cityWeatherData);
+
     });
 }
 

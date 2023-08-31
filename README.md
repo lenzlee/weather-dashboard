@@ -5,6 +5,10 @@ Bootcamp Homework 6: Weather Dashboard (Server-Side APIs)
 
 In this project, we were asked to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
 
+On page load, the current date displays at the top of the page. A user can enter a city in the search input box and when the search button is clicked, the application will query the Open Weather API and displays weather information + the 5 day forecast for the chosen city. 
+
+Also on page load, buttons for the recent cities searched will display below the search form. The data is fetched from the data stored in the local storage. If no data is stored, nothing displays below the search form.
+
 
 ## References/Resources
 
